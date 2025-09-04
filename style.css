@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  background-color: black;
-  color: #00ff66;
+  background-color: #071311;
+  color: #a6c9c4;
   font-family: 'Courier New', monospace;
   font-size: 18px;
   line-height: 1.4;
@@ -15,7 +15,7 @@ body {
 .cursor {
   display: inline-block;
   width: 10px;
-  background-color: #00ff66;
+  background-color: #a6c9c4;
   animation: blink 1s step-end infinite;
 }
 

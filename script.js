@@ -44,8 +44,8 @@ function startPrompt() {
   terminal.appendChild(prompt);
 
   const input = document.createElement('input');
-  input.style.background = 'black';
-  input.style.color = '#00ff66';
+  input.style.background = '#2cffdcff';
+  input.style.color = '#a6c9c4';
   input.style.border = 'none';
   input.style.outline = 'none';
   input.style.font = 'inherit';
