@@ -2,12 +2,13 @@ const terminal = document.getElementById('terminal');
 
 // Boot sequence lines
 const bootLines = [
-  "WEYLAND-YUTANI SYSTEM INITIALIZING...",
-  "LOADING MAINFRAME OS v1.2",
+  "USCM SYSTEM INITIALIZING...",
+  "LOADING NODE: USS ALMAYER...",
   "CHECKING SUBSYSTEMS...",
   "SECURITY PROTOCOLS ONLINE",
   "NETWORK INTERFACE ACTIVE",
-  "BOOT SEQUENCE COMPLETE"
+  "BOOT SEQUENCE COMPLETE",
+  " "
 ];
 
 // Typewriter effect
