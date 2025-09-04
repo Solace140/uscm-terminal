@@ -51,7 +51,7 @@ function typeLine(lineOrLines, callback) {
           playClick(); // Play sound for each character
           i++;
           terminal.scrollTop = terminal.scrollHeight;
-          setTimeout(typeChar, speed);
+          setTimeout(typeChar, Math.random() * speed);
         } else {
           terminal.removeChild(caret);
           terminal.appendChild(document.createElement('br'));
@@ -170,5 +170,6 @@ function newPrompt() {
 
 
 runBootSequence(bootLines);
+
 
 
