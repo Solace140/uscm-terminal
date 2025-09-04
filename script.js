@@ -1,4 +1,5 @@
 const terminal = document.getElementById('terminal');
+const container = document.getElementById('terminal-container');
 
 // Boot sequence lines
 const bootLines = [
@@ -34,7 +35,10 @@ function runBootSequence(lines, index = 0) {
   if (index < lines.length) {
     typeLine(lines[index], () => runBootSequence(lines, index + 1));
   } else {
-    startPrompt();
+    setTimeout(() => {
+      container.classList.remove('flicker');
+      startPrompt();
+    }, 1000);
   }
 }
 
@@ -45,8 +49,8 @@ function startPrompt() {
   terminal.appendChild(prompt);
 
   const input = document.createElement('input');
-  input.style.background = '#071311';
-  input.style.color = '#a6c9c4';
+  input.style.background = 'black';
+  input.style.color = '#00ff66';
   input.style.border = 'none';
   input.style.outline = 'none';
   input.style.font = 'inherit';
@@ -63,5 +67,6 @@ function startPrompt() {
   input.focus();
 }
 
-// Start everything
+// Start everything with flicker effect
+container.classList.add('flicker');
 runBootSequence(bootLines);
