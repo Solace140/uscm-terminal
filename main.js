@@ -13,9 +13,9 @@ const bootLines = [
 
 // List of click sounds
 const clickSounds = [
-  'https://github.com/Solace140/uscm-terminal/blob/753e72e02bfc6344ade1480b2c11ff605139d72d/sounds/click1.WAV',
-  'https://github.com/Solace140/uscm-terminal/blob/753e72e02bfc6344ade1480b2c11ff605139d72d/sounds/click2.WAV',
-  'https://github.com/Solace140/uscm-terminal/blob/753e72e02bfc6344ade1480b2c11ff605139d72d/sounds/click3.WAV'
+  'sounds/click1.wav',
+  'sounds/click2.wav',
+  'sounds/click3.wav'
 ];
 
 function playClick() {
@@ -170,4 +170,5 @@ function newPrompt() {
 
 
 runBootSequence(bootLines);
+
 
