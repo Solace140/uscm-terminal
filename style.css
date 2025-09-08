@@ -17,9 +17,28 @@ body {
   height: 90vh;
   overflow-y: auto;
   text-shadow: 0 0 5px #a6c9c4;
+  /* Custom scrollbar for Webkit browsers */
+  scrollbar-width: thin;
+  scrollbar-color: #a6c9c4 #071311;
 }
 
-/* Our custom cursor */
+/* Webkit scrollbar styling */
+#terminal::-webkit-scrollbar {
+  width: 12px;
+  background: #071311;
+}
+#terminal::-webkit-scrollbar-thumb {
+  background: #a6c9c4;
+  border-radius: 6px;
+  border: 2px solid #071311;
+}
+#terminal::-webkit-scrollbar-thumb:hover {
+  background: #7fa7a2;
+}
+#terminal::-webkit-scrollbar-track {
+  background: #071311;
+}
+
 .caret {
   display: inline-block;
   width: 1px;
@@ -33,7 +52,6 @@ body {
   50% { opacity: 0; }
 }
 
-/* Scanline overlay */
 #overlay {
   position: fixed;
   top: 0;
@@ -65,8 +83,8 @@ input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.08; /* Adjust transparency as needed */
-  pointer-events: none; /* Allow clicks to pass through */
+  opacity: 0.08;
+  pointer-events: none;
   max-width: 60%;
   max-height: 60%;
   z-index: 0;

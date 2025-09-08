@@ -84,13 +84,15 @@ import clear from './commands/clear.js';
 import list from './commands/list.js';
 import open from './commands/open.js';
 import back from './commands/back.js';
+import query from './commands/query.js';
 
 const commands = {
   help,
   clear,
   list,
   open,
-  back
+  back,
+  query
 };
 
 const state = {
@@ -100,7 +102,9 @@ const state = {
 function getCurrentPath(state) {
   // Ensure root is shown as "/"
   if (!state.currentDir || state.currentDir === '' || state.currentDir === '/') return '/';
-  return '/' + state.currentDir.replace(/^\/|\/$/g, '');
+  const parts = state.currentDir.replace(/^\/|\/$/g, '').split('/');
+  const lastTwo = parts.slice(-2).join('/');
+  return '/' + lastTwo;
 }
 
 // Command prompt setup
@@ -130,21 +134,26 @@ function newPrompt() {
       if (commands[cmd]) {
         playSound('sounds/agree1.wav', 0.5);
         const result = commands[cmd](terminal, state, args);
-        if (result instanceof Promise) {
-          result.then(output => {
-            if (output) {
-              typeLine(output, () => {
-                terminal.appendChild(document.createElement('br')); // Add empty line
+        const handleOutput = (output) => {
+          if (output && typeof output === 'object' && (output.images || output.text)) {
+            // Render images as HTML
+            if (output.images) {
+              const imgDiv = document.createElement('div');
+              imgDiv.innerHTML = output.images;
+              terminal.appendChild(imgDiv);
+            }
+            // Type out the text
+            if (output.text) {
+              typeLine(output.text, () => {
+                terminal.appendChild(document.createElement('br'));
                 newPrompt();
               });
             } else {
               terminal.appendChild(document.createElement('br'));
               newPrompt();
             }
-          });
-        } else {
-          if (result) {
-            typeLine(result, () => {
+          } else if (output) {
+            typeLine(output, () => {
               terminal.appendChild(document.createElement('br'));
               newPrompt();
             });
@@ -152,6 +161,11 @@ function newPrompt() {
             terminal.appendChild(document.createElement('br'));
             newPrompt();
           }
+        };
+        if (result instanceof Promise) {
+          result.then(handleOutput);
+        } else {
+          handleOutput(result);
         }
       } else if (cmd) {
         typeLine(`Unknown command: ${cmd}`, newPrompt);
@@ -168,8 +182,4 @@ function newPrompt() {
   input.focus();
 }
 
-
 runBootSequence(bootLines);
-
-
-

@@ -1,12 +1,4 @@
 {
-    "name": "New Hancheng",
-    "country": "Unknown",
-    "population": 0,
-    "coordinates": {
-        "latitude": 0.0,
-        "longitude": 0.0
-    },
-    "description": "A generic city entry for New Hancheng.",
-    "features": [],
-    "established": null
+	"images": "",
+	"text": "Location: New Hancheng\nPopulation: No permanent civilian population.\nStatus: Quarantined\n\nNotes: New Hancheng and the surrounding areas are still suffering from the lasting effects of a dirty bomb detonated within the city in early June of 2180. In addition, the majority of the civilian population within the city has been heavily mutated by the vector known as AO-3959X.19-15.\nContact: Administrator Lee\n"
 }
